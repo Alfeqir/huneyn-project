@@ -15,15 +15,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#faf8f5] text-[#2c2a29] flex flex-col justify-center px-6 py-16">
       
-      {/* Dynamic Browser & SEO Information */}
-      <head>
-        <title>Huneyn Project | Educational Foundations</title>
-        <meta name="description" content="A digital flagship platform dedicated to preserving knowledge and cultivating accessible, structured educational foundations." />
-        <meta property="og:title" content="Huneyn Project" />
-        <meta property="og:description" content="Preserving Knowledge, Cultivating Community. Explore our digital baseline infrastructure." />
-        <meta property="og:site_name" content="Huneyn Project" />
-        <meta property="og:type" content="website" />
-      </head>
 
       <div className="max-w-4xl mx-auto w-full space-y-16 mt-8">
         

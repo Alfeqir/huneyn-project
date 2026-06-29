@@ -30,7 +30,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="bg-[#faf8f5] text-[#2c2a29] min-h-screen flex flex-col">
+      <body className="bg-[#faf8f5] dark:bg-[#121110] text-[#2c2a29] dark:text-[#e6dfd3] min-h-screen flex flex-col transition-colors duration-300">
         
         {/* --- GLOBAL UNIFIED RESPONSIVE NAVBAR --- */}
         <nav className="fixed top-0 left-0 right-0 bg-[#faf8f5]/90 backdrop-blur-md border-b border-[#e6dfd3] z-50 px-4 md:px-6">
@@ -76,4 +76,5 @@ export default function RootLayout({
       </body>
     </html>
   );
+  
 }

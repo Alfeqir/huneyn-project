@@ -19,8 +19,9 @@ interface VideoSeries {
   videos: Video[];
 }
 
-interface BlogNote {
-  id: string;
+// Restructured Categorized Note Blueprint
+interface CategorizedNote {
+  order: number;
   title: string;
   amharicTitle: string;
   date: string;
@@ -29,7 +30,15 @@ interface BlogNote {
   content: string;
 }
 
-// 📺 YouTube Video Hub Databases
+interface NoteDatabase {
+  [key: string]: {
+    label: string;
+    description: string;
+    notes: CategorizedNote[];
+  };
+}
+
+// 📺 YouTube Video Hub Databases (100% Intact & Untouched)
 const VIDEO_SERIES_ARCHIVE: VideoSeries[] = [
   {
     id: 'series-1',
@@ -64,36 +73,66 @@ const VIDEO_SERIES_ARCHIVE: VideoSeries[] = [
   }
 ];
 
-// 📝 Independent Standalone Notes (Scholarly Blog Environment)
-const STANDALONE_BLOG_NOTES: BlogNote[] = [
-  {
-    id: 'note-1',
-    title: 'The Anatomy of Sincerity in Digital Spaces',
-    amharicTitle: 'በዲጂታል ዓለም ውስጥ ያለ ኢኽላስ (ቅንነት)',
-    date: 'June 2026',
-    readTime: '4 min read',
-    excerpt: 'Examining the structural threats that instant validation metrics pose to individual heart intentionality.',
-    content: 'In contemporary digital micro-climates, the metrics of visibility frequently conflict with classical paradigms of spiritual anonymity. Cultivating internal sincerity requires an intentional scaffolding of hidden devotions—actions deliberately kept away from social transmission strings.'
+// 📝 The New Restructured 6-Category Audience Database
+const CATEGORIZED_NOTES_DATABASE: NoteDatabase = {
+  campus: {
+    label: "🎓 Campus Students",
+    description: "Anchoring classical principles and maintaining spiritual baseline clarity within higher education.",
+    notes: [
+      { order: 1, title: "The Modern Campus Dilemma", amharicTitle: "የካምፓስ ሕይወትና የዒማን መዋዠቅ", date: "June 2026", readTime: "5 min read", excerpt: "Balancing academic requirements cleanly while keeping daily spiritual benchmarks active.", content: "The modern campus ecosystem is built to question presuppositions. For a genuine seeker, establishing non-negotiable spiritual metrics early in the morning and protecting basic communal bonds represents the supreme defensive architecture." },
+      { order: 2, title: "Time Optimization Loops", amharicTitle: "የጊዜ አጠቃቀም ስልቶች ለተማሪዎች", date: "June 2026", readTime: "4 min read", excerpt: "Strategic parameters for handling double workflows—academic syllabi and sacred literacy.", content: "Barakah is built by honoring priorities. Protect your post-dawn hour for foundational text review before secular project timelines scatter your focus points." },
+      { order: 3, title: "Intellectual Sovereignty", amharicTitle: "የአስተሳሰብ ነጻነት በክፍል ውስጥ", date: "June 2026", readTime: "6 min read", excerpt: "Processing modern philosophical parameters without diluting core Aqeedah foundational metrics.", content: "Doubts inside secular discourse are often historical or psychological rather than purely logical. Build solid systematic textual baselines first before exploring modern analytical theories." }
+    ]
   },
-  {
-    id: 'note-2',
-    title: 'Classical Research Methodologies vs Modern Speed',
-    amharicTitle: 'የቀደሙ ሊቃውንት የምርምር ስልቶች እና የዘመናዊው ዓለም ፍጥነት',
-    date: 'May 2026',
-    readTime: '6 min read',
-    excerpt: 'A review of traditional text extraction patience versus fast-paced content consumption loops.',
-    content: 'Traditional scholarship prioritized slow vertical deep-dives into single-text syntax parameters before extraction arguments were formed. Modern information structures favor shallow horizontal distributions, creating an immediate need for students to rebuild focused attention boundaries.'
+  media: {
+    label: "📱 Media Users",
+    description: "Cultivating rigorous analytical filters for processing high-speed algorithmic inputs safely.",
+    notes: [
+      { order: 1, title: "The Algorithmic Heart", amharicTitle: "የሶሻል ሚዲያና የልብ መርጋት", date: "June 2026", readTime: "5 min read", excerpt: "Analyzing how hyper-speed feeds shape intention fields and psychological stability.", content: "Every visual imprint shifts interior spiritual orientation. Guarding your interface entry points is the supreme dynamic fast of the present tech generation." },
+      { order: 2, title: "Digital Transmission Integrity", amharicTitle: "የዕውቀት ስርጭት ስርዓት", date: "June 2026", readTime: "6 min read", excerpt: "Core criteria for publishing or sharing knowledge indicators across media networks cleanly.", content: "Platform reach does not substitute for transmission safety. Ensure information lines are fully cross-referenced before sending to community streams." }
+    ]
+  },
+  parents: {
+    label: "🏡 Parents",
+    description: "Constructing protective household frameworks to foster organic family development.",
+    notes: [
+      { order: 1, title: "Nurturing Natural Fitrah", amharicTitle: "የልጆች አስተዳደግና የዘመኑ ተግዳሮት", date: "June 2026", readTime: "7 min read", excerpt: "Protecting a child's foundational intuition from early excessive interface exposure.", content: "Children emulate active micro-habits rather than structural verbal commands. The home structure must emphasize high tactile baseline connections, reading structures, and clear-sighted presence." }
+    ]
+  },
+  ilm: {
+    label: "📚 Students of Ilm",
+    description: "Formal parameters regarding classical text mastery, methodology, and character layout metrics.",
+    notes: [
+      { order: 1, title: "The Etiquette of the Seeker", amharicTitle: "የእውቀት ፈላጊ ስነ-ምግባር", date: "June 2026", readTime: "8 min read", excerpt: "Why purification of intent strictly overrides basic technical knowledge accumulation.", content: "Knowledge serves as a clean ambient illumination that requires a quiet, highly disciplined receptacle. Integrity before text frameworks remains the absolute condition for lasting retention." },
+      { order: 2, title: "The Textual Progression Staircase", amharicTitle: "ደረጃ በደረጃ የሚቀሰም እውቀት", date: "May 2026", readTime: "7 min read", excerpt: "A sequential guide on moving through classical primers safely without skipping essential foundations.", content: "Diving directly into expansive analytical debates before solidifying basic legal or grammatical codices produces fragile comprehension frameworks. Follow traditional paths meticulously." }
+    ]
+  },
+  women: {
+    label: "✨ Women",
+    description: "Honoring the historic and contemporary roles of female legacy creators and legal minds.",
+    notes: [
+      { order: 1, title: "Architects of Foundational Legacy", amharicTitle: "የሙስሊም ሴቶች ታሪካዊ ሚና", date: "June 2026", readTime: "6 min read", excerpt: "Examining historic precedents of institutional design and scholarly output led by women.", content: "True community building centers around structural domestic strength combined with advanced legal and intellectual literacy. Our history shows women consistently leading academic spaces with flawless preservation of identity." }
+    ]
+  },
+  tech: {
+    label: "💻 Tech",
+    description: "Deploying programmatic tools, design models, and system engineering architectures to serve the community.",
+    notes: [
+      { order: 1, title: "Code as a Continuous Legacy", amharicTitle: "ቴክኖሎጂና የእውቀት ስርጭት", date: "June 2026", readTime: "5 min read", excerpt: "Leveraging clean structural programming layout models to open up classical resources safely.", content: "Writing optimal software interfaces, highly legible indexes, and functional reading frameworks reduces architectural friction for thousands of students globally. Intentional coding is a high-grade legacy asset." }
+    ]
   }
-];
+};
 
 export default function ReflectionsPage() {
-  // Navigation State: 'landing' (clean gateway view) | 'video' | 'notes'
+  // Navigation State: 'landing' | 'video' | 'notes'
   const [activeView, setActiveView] = useState<'landing' | 'video' | 'notes'>('landing');
   
-  // Active inner data pointers
+  // Note Target Audience Filtering State (Defaulting to 'campus')
+  const [activeNoteCategory, setActiveNoteCategory] = useState<string>('campus');
+  
+  // Active inner data pointers for Video Hub (Preserved Completely)
   const [selectedSeries, setSelectedSeries] = useState<VideoSeries>(VIDEO_SERIES_ARCHIVE[0]);
   const [activeVideo, setActiveVideo] = useState<Video>(VIDEO_SERIES_ARCHIVE[0].videos[0]);
-  const [selectedBlog, setSelectedBlog] = useState<BlogNote>(STANDALONE_BLOG_NOTES[0]);
 
   const handleSeriesChange = (series: VideoSeries) => {
     setSelectedSeries(series);
@@ -105,7 +144,7 @@ export default function ReflectionsPage() {
     <main className="min-h-screen bg-[#faf8f5] text-[#2c2a29] px-6 py-12">
       <div className="max-w-6xl mx-auto space-y-10 mt-12">
         
-        {/* --- GLOBAL SECTION BACK NAVIGATION (Only visible inside a hub) --- */}
+        {/* --- GLOBAL SECTION BACK NAVIGATION --- */}
         {activeView !== 'landing' && (
           <button
             onClick={() => setActiveView('landing')}
@@ -116,7 +155,7 @@ export default function ReflectionsPage() {
         )}
 
         {/* ========================================================================= */}
-        {/* VIEW 1: CLEAN LANDING GATEWAY (No contents visible, just choice portals) */}
+        {/* VIEW 1: CLEAN LANDING GATEWAY */}
         {/* ========================================================================= */}
         {activeView === 'landing' && (
           <div className="space-y-12 py-8 max-w-4xl mx-auto animate-fadeIn">
@@ -128,7 +167,6 @@ export default function ReflectionsPage() {
               </p>
             </div>
 
-            {/* The Two Main Choice Blocks Side-By-Side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
               
               {/* Option A Card: Video Hub Portal */}
@@ -182,7 +220,7 @@ export default function ReflectionsPage() {
         )}
 
         {/* ========================================================================= */}
-        {/* VIEW 2: INSIDE THE VIDEO BROADCASTS HUB */}
+        {/* VIEW 2: INSIDE THE VIDEO BROADCASTS HUB (100% Preserved & Intact) */}
         {/* ========================================================================= */}
         {activeView === 'video' && (
           <div className="space-y-8 animate-fadeIn">
@@ -192,7 +230,6 @@ export default function ReflectionsPage() {
                 <p className="text-xs font-mono text-[#7c756e] uppercase tracking-wider">{selectedSeries.englishTitle} — Video Archive</p>
               </div>
               
-              {/* Internal Series Jumper Buttons */}
               <div className="flex flex-wrap gap-2">
                 {VIDEO_SERIES_ARCHIVE.map((series) => (
                   <button
@@ -208,7 +245,6 @@ export default function ReflectionsPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Embedded Player Display */}
               <div className="lg:col-span-8 space-y-4">
                 <div className="aspect-video w-full bg-black rounded-2xl overflow-hidden shadow-xs border border-[#e6dfd3] relative">
                   {activeVideo.isAvailable ? (
@@ -231,7 +267,6 @@ export default function ReflectionsPage() {
                 </div>
               </div>
 
-              {/* Side Playlists Part Column */}
               <div className="lg:col-span-4 space-y-2">
                 <p className="text-[11px] font-mono font-bold text-[#9c938a] uppercase tracking-wider border-b border-[#f4f0ea] pb-2">Available Parts:</p>
                 {selectedSeries.videos.map((vid) => (
@@ -256,50 +291,84 @@ export default function ReflectionsPage() {
         )}
 
         {/* ========================================================================= */}
-        {/* VIEW 3: INSIDE THE INDEPENDENT WRITTEN STUDY NOTES (BLOG HUB) */}
+        {/* VIEW 3: NEW INTERACTIVE TARGET AUDIENCE METHOD FOR THE NOTES SECTION      */}
         {/* ========================================================================= */}
         {activeView === 'notes' && (
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start animate-fadeIn">
+          <div className="space-y-8 max-w-5xl mx-auto animate-fadeIn">
             
-            {/* Left Side: Blog Notebook Feed List */}
-            <div className="md:col-span-4 space-y-3">
-              <p className="text-[11px] font-mono font-bold text-[#9c938a] uppercase tracking-wider border-b border-[#f4f0ea] pb-2">Written Diary Notebooks:</p>
-              {STANDALONE_BLOG_NOTES.map((blog) => (
-                <button
-                  key={blog.id}
-                  onClick={() => setSelectedBlog(blog)}
-                  className={`w-full text-left p-4 border rounded-xl transition-all flex flex-col space-y-2 cursor-pointer select-none
-                    ${selectedBlog.id === blog.id ? 'bg-white border-[#1c1a19] ring-1 ring-[#1c1a19]/5' : 'bg-white border-[#e6dfd3] hover:border-[#1c1a19]'}`}
-                >
-                  <div className="space-y-0.5">
-                    <span className="text-[9px] font-mono text-[#7c756e] font-bold block">{blog.date} • {blog.readTime}</span>
-                    <h4 className="text-sm font-serif font-medium text-[#1c1a19] leading-snug">{blog.amharicTitle}</h4>
-                    <p className="text-[11px] text-[#7c756e] font-sans font-medium line-clamp-1">{blog.title}</p>
-                  </div>
-                  <p className="text-[11px] text-[#5c554e] line-clamp-2 leading-relaxed font-sans">{blog.excerpt}</p>
-                </button>
-              ))}
+            {/* Header Identity block */}
+            <div className="border-b border-[#e6dfd3] pb-4">
+              <h2 className="text-2xl font-serif font-medium text-[#1c1a19]">Classified Study Reminders</h2>
+              <p className="text-xs font-mono text-[#7c756e] uppercase tracking-wider">ጽሑፎች እና የግል ማስታወሻዎች — Structured Registers</p>
             </div>
 
-            {/* Right Side: Clean Expanded Reading Sheet */}
-            <div className="md:col-span-8 bg-white border border-[#e6dfd3] rounded-3xl p-8 shadow-xs space-y-6">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-[10px] font-mono text-[#7c756e] font-bold">
-                  <span>{selectedBlog.date}</span>
-                  <span>•</span>
-                  <span>{selectedBlog.readTime}</span>
+            {/* 🛠️ The Audience Selection Tab Bar Grid (Highly Responsive) */}
+            <div className="flex flex-wrap gap-2 border-b border-[#f4f0ea] pb-4">
+              {Object.keys(CATEGORIZED_NOTES_DATABASE).map((key) => {
+                const category = CATEGORIZED_NOTES_DATABASE[key];
+                const isCurrent = activeNoteCategory === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setActiveNoteCategory(key)}
+                    className={`px-4 py-2.5 text-xs font-sans font-bold tracking-wide border rounded-xl transition-all cursor-pointer outline-none select-none
+                      ${isCurrent 
+                        ? 'bg-[#1c1a19] text-white border-[#1c1a19] shadow-xs' 
+                        : 'bg-white text-[#7c756e] border-[#e6dfd3] hover:text-[#1c1a19] hover:border-[#1c1a19]'}`}
+                  >
+                    {category.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Target Audience Mission Statement block */}
+            <div className="bg-[#e6dfd3]/20 p-5 rounded-2xl border border-[#e6dfd3]/60">
+              <p className="text-[10px] font-mono uppercase font-bold tracking-widest text-[#7c756e] mb-1">Target Context Profile</p>
+              <p className="text-xs font-serif italic text-[#4c4a49] leading-relaxed">
+                "{CATEGORIZED_NOTES_DATABASE[activeNoteCategory].description}"
+              </p>
+            </div>
+
+            {/* Ordered List Stream Layout (Ordered 1, 2, 3 as requested) */}
+            <div className="space-y-6">
+              {CATEGORIZED_NOTES_DATABASE[activeNoteCategory].notes.map((note) => (
+                <div 
+                  key={note.order} 
+                  className="bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-xs transition-all space-y-4"
+                >
+                  {/* Meta Strip */}
+                  <div className="flex items-center justify-between border-b border-[#f4f0ea] pb-3">
+                    <div className="flex items-center gap-3">
+                      {/* Explicit Order Tracker Badge */}
+                      <span className="w-7 h-7 rounded-lg bg-[#1c1a19] text-white flex items-center justify-center font-mono text-xs font-bold shadow-xs">
+                        {note.order}
+                      </span>
+                      <div>
+                        <h4 className="text-md font-serif font-medium text-[#1c1a19] leading-snug">
+                          {note.amharicTitle}
+                        </h4>
+                        <p className="text-[11px] text-[#7c756e] font-sans font-medium">
+                          {note.title}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[9px] font-mono tracking-wider text-stone-400 bg-stone-50 border border-stone-200/60 px-2 py-0.5 rounded-sm">
+                      {note.date} • {note.readTime}
+                    </span>
+                  </div>
+
+                  {/* Summary/Excerpt block */}
+                  <p className="text-[11px] font-mono font-bold text-[#7c756e] uppercase tracking-wider">
+                    Core Focus: <span className="font-normal normal-case text-[#4c4a49] font-sans text-xs ml-1">{note.excerpt}</span>
+                  </p>
+
+                  {/* Complete Readout Container */}
+                  <div className="bg-[#faf8f5] p-5 rounded-xl border border-stone-100 text-sm leading-relaxed text-[#2c2a29] font-sans whitespace-pre-line">
+                    {note.content}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-serif font-medium text-[#1c1a19] pt-1">{selectedBlog.amharicTitle}</h3>
-                <p className="text-xs text-[#7c756e] font-mono uppercase tracking-wider">{selectedBlog.title}</p>
-              </div>
-
-              <div className="text-sm text-[#4c4a49] leading-relaxed font-sans space-y-4 border-t border-[#f4f0ea] pt-6 whitespace-pre-line">
-                {selectedBlog.content}
-              </div>
-
-              <div className="bg-[#faf8f5] border border-dashed border-[#e6dfd3] p-4 rounded-xl text-xs text-[#7c756e] font-mono mt-8">
-                ✒️ <strong>Future Writing Track:</strong> New separate analytical journals, community advice blueprints, and educational logs will save directly into this clean reading stream framework.
-              </div>
+              ))}
             </div>
 
           </div>
