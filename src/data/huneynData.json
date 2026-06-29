@@ -1,0 +1,41 @@
+{
+    "reflections": [
+      {
+        "id": "huneyn-47-day1",
+        "title": "The Illusion of Numbers",
+        "series": "Huneyn 47 Series",
+        "dayNumber": 1,
+        "excerpt": "Correcting our reliance on material means.",
+        "content": "In the early moments of the Battle of Huneyn, a subtle shift occurred in the hearts of the believers. Looking at their vast numbers—twelve thousand strong—some felt a fleeting sense of self-reliance. The Qur'an captures this precisely: '...when your great numbers pleased you, but they availed you nothing.' This is our first lesson. The digital world teaches us to chase numbers, metrics, and crowds. Huneyn teaches us that victory, clarity, and peace come only when the heart detaches from the crowd and relies entirely on the One.",
+        "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      {
+        "id": "huneyn-47-day2",
+        "title": "The Pressure of the Valley",
+        "series": "Huneyn 47 Series",
+        "dayNumber": 2,
+        "excerpt": "Navigating sudden ambush and constriction.",
+        "content": "As the army entered the steep, narrow descent of the valley of Huneyn in the twilight, an ambush was sprung. Arrows rained from the dark ridges. The narrow space amplified the chaos. The Qur'an states: 'and the earth, vast as it is, was straitened for you.' Sometimes, life suddenly feels incredibly narrow and claustrophobic. Financial pressures, spiritual dry spells, or relational friction ambush us out of nowhere. The trial isn't a sign of failure; the narrow valley is precisely where our true dependencies are brought to light.",
+        "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      },
+      {
+        "id": "huneyn-47-day3",
+        "title": "The Anchor of Tranquility",
+        "series": "Huneyn 47 Series",
+        "dayNumber": 3,
+        "excerpt": "Discovering true peace when the world retreats.",
+        "content": "When the initial retreat occurred, the Prophet ﷺ stood firm, calling out to the companions. It was at this moment of absolute vulnerability that a supernatural shift descended. 'Then Allah sent down His tranquility (Sakinah) upon His Messenger and upon the believers...' This is the ultimate secret of the spiritual path. True peace is not the absence of a storm; it is the presence of divine calmness injected directly into a broken heart while the storm is raging around it.",
+        "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+      }
+    ],
+    "adhkar": [
+      {
+        "id": "morning-1",
+        "title": "Morning Remembrance",
+        "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
+        "transliteration": "Asbahna wa-asbahal-mulku lillah, wal-hamdu lillah",
+        "translation": "We have entered a new day and with it all dominion belongs to Allah, and all praise is due to Allah.",
+        "targetCount": 3
+      }
+    ]
+  }
