@@ -97,7 +97,19 @@ export default function ReflectionsPage() {
       try {
         // Query both pools safely from Sanity
         const [rawVideos, rawNotes] = await Promise.all([
-          client.fetch(`*[_type == "videoSeries"]{ "id": _id, title, englishTitle, description, videos }`),
+          client.fetch(`*[_type == "videoSeries"]{ 
+            "id": _id, 
+            title, 
+            englishTitle, 
+            description, 
+            videos[] {
+              title,
+              youtubeId,
+              duration,
+              part,
+              isAvailable
+            }
+          }`),
           client.fetch(`*[_type == "categorizedNote"] | order(order asc){ order, title, amharicTitle, date, readTime, excerpt, content, category }`)
         ]);
 
