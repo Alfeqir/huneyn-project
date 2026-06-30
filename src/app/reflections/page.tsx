@@ -261,7 +261,7 @@ export default function ReflectionsPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8 space-y-4">
-                <div className="aspect-video w-full bg-black rounded-2xl overflow-hidden shadow-xs border border-[#e6dfd3] relative">
+              <div className="aspect-video w-full max-w-xl mx-auto bg-black rounded-2xl overflow-hidden shadow-xs border border-[#e6dfd3] relative">
                   {activeVideo && activeVideo.isAvailable ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=0&rel=0`}
