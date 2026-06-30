@@ -45,7 +45,7 @@ const videoSeriesType = defineType({
   ],
 })
 
-// 📝 2. CATEGORIZED NOTE SCHEMA (Defined inline to bypass compiler bugs)
+// 📝 2. CATEGORIZED NOTE SCHEMA (With Preview Layer Added)
 const categorizedNoteType = defineType({
   name: 'categorizedNote',
   title: '📝 Study Notes',
@@ -74,6 +74,29 @@ const categorizedNoteType = defineType({
       },
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'amharicTitle',
+      category: 'category',
+    },
+    prepare(selection) {
+      const { title, subtitle, category } = selection
+      const categoryMap: Record<string, string> = {
+        campus: '🎓 Campus',
+        media: '📱 Media',
+        parents: '🏡 Parents',
+        ilm: '📚 Ilm',
+        women: '✨ Women',
+        tech: '💻 Tech',
+      }
+      const catLabel = categoryMap[category || ''] || '📝 Note'
+      return {
+        title: title || 'Untitled Note',
+        subtitle: `[${catLabel}] — ${subtitle || ''}`,
+      }
+    },
+  },
 })
 
 // 🚀 3. EXPORT UNIFIED SCHEMA
