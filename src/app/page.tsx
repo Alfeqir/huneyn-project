@@ -8,15 +8,13 @@ export default function HomePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Later we can wire this up to a real email handler. For now, it shows success!
     setFormSubmitted(true);
   };
 
   return (
     <main className="min-h-screen bg-[#faf8f5] text-[#2c2a29] flex flex-col justify-center px-6 py-16">
       
-
-      <div className="max-w-4xl mx-auto w-full space-y-16 mt-8">
+      <div className="max-w-5xl mx-auto w-full space-y-16 mt-8">
         
         {/* HERO SECTION: Slogan & Identity */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
@@ -31,8 +29,8 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* ECOSYSTEM GATEWAYS: The Beautiful Entrance Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* ECOSYSTEM GATEWAYS: The Beautiful 4-Quadrant Entrance */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           
           {/* Gateway 1: Reflections */}
           <Link href="/reflections" className="group bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-xs hover:border-[#1c1a19] hover:shadow-md transition-all flex flex-col justify-between space-y-6">
@@ -71,6 +69,19 @@ export default function HomePage() {
               </p>
             </div>
             <div className="text-xs font-bold text-[#1c1a19] flex items-center gap-1 group-hover:translate-x-1 transition-transform">Listen Now →</div>
+          </Link>
+
+          {/* Gateway 4: The Library (NEW!) */}
+          <Link href="/library" className="group bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-xs hover:border-[#1c1a19] hover:shadow-md transition-all flex flex-col justify-between space-y-6">
+            <div className="space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">📚</div>
+              <h3 className="text-lg font-serif font-medium text-[#1c1a19]">The Library</h3>
+              <p className="text-xs text-[#7c756e] font-sans">የመጽሐፍ ማህደር</p>
+              <p className="text-xs text-[#4c4a49] leading-relaxed">
+                Explore original physical distributions, research papers, study literature, and free PDF downloads.
+              </p>
+            </div>
+            <div className="text-xs font-bold text-[#1c1a19] flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explore Library →</div>
           </Link>
 
         </div>
