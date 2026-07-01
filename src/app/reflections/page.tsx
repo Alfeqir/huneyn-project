@@ -297,10 +297,10 @@ export default function ReflectionsPage() {
               </div>
 
               <div className="lg:col-span-4 space-y-2">
-                <p className="text-[11px] font-mono font-bold text-[#9c938a] uppercase tracking-wider border-b border-[#f4f0ea] pb-2">Available Parts:</p>
-                {selectedSeries.videos?.map((vid) => (
+              <p className="text-[11px] font-mono font-bold text-[#9c938a] uppercase tracking-wider border-b border-[#f4f0ea] pb-2">Available Parts:</p>
+                {selectedSeries.videos?.map((vid, index) => (
                   <button
-                    key={vid.id}
+                    key={vid.id || `video-${index}`}
                     onClick={() => vid.isAvailable && setActiveVideo(vid)}
                     disabled={!vid.isAvailable}
                     className={`w-full text-left p-3 border rounded-xl flex items-center justify-between transition-all select-none

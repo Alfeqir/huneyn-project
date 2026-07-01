@@ -10,7 +10,13 @@ export const structure: StructureResolver = (S) =>
       // 🎬 Videos Section
       S.documentTypeListItem('videoSeries').title('🎬 Video Broadcasts'),
       
-      S.divider(), // Adds a clean visual line separating notes
+      S.divider(), // ------------------------------------
+
+      // 🎓 HUNEYN ACADEMY PLATFORM SECTIONS
+      S.documentTypeListItem('courseTrack').title('🎓 Academy Courses'),
+      S.documentTypeListItem('lesson').title('📖 Academy Lessons'),
+
+      S.divider(), // ------------------------------------
 
       // 📝 Organized Notes Section
       S.listItem()
