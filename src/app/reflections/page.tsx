@@ -92,6 +92,9 @@ export default function ReflectionsPage() {
   const [activeVideo, setActiveVideo] = useState<Video | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Array registry tracking which notes are open to bypass long multi-scroll layouts
+  const [expandedNotes, setExpandedNotes] = useState<number[]>([]);
+
   useEffect(() => {
     async function syncReflectionsData() {
       try {
@@ -150,6 +153,17 @@ export default function ReflectionsPage() {
     setSelectedSeries(series);
     const firstValid = series.videos?.find(v => v.isAvailable) || series.videos?.[0];
     setActiveVideo(firstValid || null);
+  };
+
+  // Resets collapsed visibility matrix on folder change to keep view states unpolluted
+  useEffect(() => {
+    setExpandedNotes([]);
+  }, [activeNoteCategory]);
+
+  const toggleNoteExpansion = (orderId: number) => {
+    setExpandedNotes(prev =>
+      prev.includes(orderId) ? prev.filter(id => id !== orderId) : [...prev, orderId]
+    );
   };
 
   // Safe checks to guarantee clean text render cycles
@@ -235,7 +249,7 @@ export default function ReflectionsPage() {
         )}
 
         {/* ========================================================================= */}
-        {/* VIEW 2: INSIDE THE VIDEO BROADCASTS HUB (100% Preserved) */}
+        {/* VIEW 2: INSIDE THE VIDEO BROADCASTS HUB */}
         {/* ========================================================================= */}
         {activeView === 'video' && selectedSeries && (
           <div className="space-y-8 animate-fadeIn">
@@ -261,7 +275,7 @@ export default function ReflectionsPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8 space-y-4">
-              <div className="aspect-video w-full max-w-xl mx-auto bg-black rounded-2xl overflow-hidden shadow-xs border border-[#e6dfd3] relative">
+                <div className="aspect-video w-full max-w-xl mx-auto bg-black rounded-2xl overflow-hidden shadow-xs border border-[#e6dfd3] relative">
                   {activeVideo && activeVideo.isAvailable ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=0&rel=0`}
@@ -349,43 +363,76 @@ export default function ReflectionsPage() {
               {loading ? (
                 <div className="text-xs font-mono text-center py-12 text-stone-400">Syncing database entries...</div>
               ) : currentNotesGroup.notes && currentNotesGroup.notes.length > 0 ? (
-                currentNotesGroup.notes.map((note) => (
-                  <div 
-                    key={note.order} 
-                    className="bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-xs transition-all space-y-4"
-                  >
-                    <div className="flex items-center justify-between border-b border-[#f4f0ea] pb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="w-7 h-7 rounded-lg bg-[#1c1a19] text-white flex items-center justify-center font-mono text-xs font-bold shadow-xs">
-                          {note.order}
-                        </span>
-                        <div>
-                          <h4 className="text-md font-serif font-medium text-[#1c1a19] leading-snug">
-                            {note.amharicTitle}
-                          </h4>
-                          {note.title && (
-                            <p className="text-[11px] text-[#7c756e] font-sans font-medium">
-                              {note.title}
-                            </p>
-                          )}
+                currentNotesGroup.notes.map((note) => {
+                  const isExpanded = expandedNotes.includes(note.order);
+                  return (
+                    <div 
+                      key={note.order} 
+                      className="bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-xs transition-all space-y-4"
+                    >
+                      {/* Interactive Header Action Area */}
+                      <div 
+                        onClick={() => toggleNoteExpansion(note.order)}
+                        className="flex items-center justify-between border-b border-[#f4f0ea] pb-3 cursor-pointer group select-none"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="w-7 h-7 rounded-lg bg-[#1c1a19] text-white flex items-center justify-center font-mono text-xs font-bold shadow-xs">
+                            {note.order}
+                          </span>
+                          <div>
+                            <h4 className="text-md font-serif font-medium text-[#1c1a19] leading-snug group-hover:text-stone-600 transition-colors">
+                              {note.amharicTitle}
+                            </h4>
+                            {note.title && (
+                              <p className="text-[11px] text-[#7c756e] font-sans font-medium">
+                                {note.title}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-3">
+                          <span className="text-[9px] font-mono tracking-wider text-stone-400 bg-stone-50 border border-stone-200/60 px-2 py-0.5 rounded-sm hidden sm:inline-block">
+                            {note.date} • {note.readTime}
+                          </span>
+                          <span className="text-xs text-[#7c756e] font-mono transition-transform duration-200">
+                            {isExpanded ? '🔼' : '🔽'}
+                          </span>
                         </div>
                       </div>
-                      <span className="text-[9px] font-mono tracking-wider text-stone-400 bg-stone-50 border border-stone-200/60 px-2 py-0.5 rounded-sm">
-                        {note.date} • {note.readTime}
-                      </span>
-                    </div>
 
-                    {note.excerpt && (
-                      <p className="text-[11px] font-mono font-bold text-[#7c756e] uppercase tracking-wider">
-                        Core Focus: <span className="font-normal normal-case text-[#4c4a49] font-sans text-xs ml-1">{note.excerpt}</span>
-                      </p>
-                    )}
+                      {/* Always show the core focus summary snippet */}
+                      {note.excerpt && (
+                        <p className="text-[11px] font-mono font-bold text-[#7c756e] uppercase tracking-wider">
+                          Core Focus: <span className="font-normal normal-case text-[#4c4a49] font-sans text-xs ml-1">{note.excerpt}</span>
+                        </p>
+                      )}
 
-                    <div className="bg-[#faf8f5] p-5 rounded-xl border border-stone-100 text-sm leading-relaxed text-[#2c2a29] font-sans whitespace-pre-line">
-                      {note.content}
+                      {/* Collapsible Main Content Container with Premium Typography Enhancements */}
+                      {isExpanded ? (
+                        <div className="bg-[#faf8f5] p-5 rounded-xl border border-stone-100 text-[15px] leading-relaxed text-stone-800 font-sans tracking-wide whitespace-pre-line animate-fadeIn">
+                          {note.content}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevents clicking the outer panel from double triggering toggle
+                              toggleNoteExpansion(note.order);
+                            }}
+                            className="mt-4 block text-xs font-mono font-bold text-[#7c756e] underline cursor-pointer hover:text-[#1c1a19]"
+                          >
+                            Collapse Content
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => toggleNoteExpansion(note.order)}
+                          className="text-xs font-sans font-bold text-[#1c1a19] bg-stone-50 hover:bg-[#f4f0ea] border border-[#e6dfd3] px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1"
+                        >
+                          📖 Read Full Note ({note.readTime || 'Short Read'})
+                        </button>
+                      )}
                     </div>
-                  </div>
-                ))
+                  );
+                })
               ) : (
                 <div className="text-xs font-mono text-[#9c938a] border border-dashed border-[#e6dfd3] p-6 rounded-xl italic">
                   No records published under this profile tab yet.
